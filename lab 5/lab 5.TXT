@@ -1,0 +1,25 @@
+Link: https://overthewire.org/wargames/natas/
+
+Natas is a web security wargame offered by OverTheWire that focuses on teaching the fundamentals of server-side web security. Each level presents a unique website, accessible at URLs like http://natasX.natas.labs.overthewire.org (where X is the level number), and requires players to find the password for the next level by exploiting various web vulnerabilities.
+
+
+Structure and Learning Curve:
+
+The game starts with basic challenges that gradually increase in complexity, covering topics such as:​
+
+Viewing HTML source code to find hidden information.​
+
+Understanding and manipulating HTTP request headers.​
+
+Exploiting path traversal vulnerabilities.​
+
+Bypassing input validation to execute arbitrary commands.
+
+Performing SQL injection attacks.​
+
+Understanding and exploiting encryption weaknesses.​
+
+Natas offers a comprehensive and practical approach to learning server-side web security. Its well-structured levels, combined with community support and external resources, make it an excellent platform for both newcomers and seasoned professionals looking to sharpen their skills.
+
+
+Submission: Write your own walk-through for the wargame and submit it as a single PDF file named name_id_l5.pdf.

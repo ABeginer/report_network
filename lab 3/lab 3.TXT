@@ -1,0 +1,29 @@
+Note: for Macbook M1/M2/M3 use this lab https://seedsecuritylabs.org/Labs_20.04/Software/Buffer_Overflow_Server_ARM64/
+
+The Buffer Overflow Attack Lab (Set-UID Version) from SEED Labs focuses on understanding and exploiting buffer overflow vulnerabilities in programs. Here's a summary of the lab’s key elements:
+
+1. Overview
+The goal is to exploit a buffer overflow vulnerability in a Set-UID program and gain root privileges.
+Students will explore how various countermeasures, such as address space randomization, StackGuard, and a non-executable stack, affect the success of buffer overflow attacks.
+2. Environment Setup
+Turn off security countermeasures like address space randomization (kernel.randomize_va_space) and replace /bin/sh with zsh to bypass security restrictions in /bin/dash.
+3. Task 1: Getting Familiar with Shellcode
+The task introduces shellcode, small code snippets injected into a program to execute arbitrary commands, typically spawning a shell.
+Students will use the shellcode provided for both 32-bit and 64-bit systems.
+4. Task 2: Understanding the Vulnerable Program
+The vulnerable program reads input from a file (badfile) and copies it into a smaller buffer using strcpy(), leading to a buffer overflow.
+The goal is to exploit this vulnerability by crafting an input that triggers a root shell.
+5. Task 3: Exploiting the 32-bit Vulnerability
+Students will create a payload to overflow the buffer and overwrite the return address with the location of the shellcode.
+GDB will be used to investigate the buffer layout and calculate where the shellcode should be placed.
+6. Subsequent Tasks
+Task 4: Exploit the vulnerability without knowing the exact buffer size.
+Task 5 & 6: Conduct the same attacks on 64-bit systems, addressing new challenges due to differences in memory and address space. (NOT REQUIRED)
+Task 7: Defeat the /bin/dash privilege dropping mechanism.
+Task 8: Use brute-force methods to defeat address randomization.
+Task 9: Experiment with StackGuard and non-executable stack protections.
+The lab focuses on practical exploitation techniques and teaches students how to bypass different protection mechanisms while also providing insights into modern defenses​.
+
+Link for the lab materials: https://seedsecuritylabs.org/Labs_20.04/Files/Buffer_Overflow_Setuid/Labsetup.zip
+
+Submission: Write your own walk-through for the wargame and submit it as a single PDF file named name_id_l3.pdf.

@@ -1,0 +1,10 @@
+Link: https://overthewire.org/wargames/bandit/
+
+The Bandit wargame is designed in a CTF (Capture the Flag) format to help you learn Linux basics in an engaging and fun way. Completing this wargame will also prepare you for more advanced challenges.
+
+Guidelines:
+
+Solve independently: Try to solve each level on your own. This is the best way to truly learn.
+Use the lessons: Refer to the "lessons learned" section for each level to understand the commands that may help you complete it.
+Seek help if needed: If you're stuck, you can search for a walk-through for additional guidance.
+Submission: Write your own walk-through for the wargame and submit it as a single PDF file named name_id_l2.pdf.

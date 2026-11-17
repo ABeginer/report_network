@@ -1,0 +1,69 @@
+Lab setup files: DO NOT unzip the file in a shared folder, as that would cause problems. Copy the zip file to another folder inside the VM, and then use the unzip command to unpack.
+
+Labsetup.zip
+Labsetup-arm.zip (for Apple Silicon machines)
+Link for the lab setup: https://seedsecuritylabs.org/Labs_20.04/Web/Web_CSRF_Elgg/
+
+Overview
+Goal: Understand CSRF attacks and countermeasures.
+Context: CSRF attacks exploit a victim's active session with a trusted site to execute unauthorized actions via a malicious site.
+Tools: Open-source Elgg social networking platform with disabled CSRF protections for educational purposes.
+Lab Environment Setup
+Environment: Uses Docker containers to host:
+Vulnerable Elgg site (www.seed-server.com).
+Attacker’s site (www.attacker32.com).
+Defense site (www.example32.com).
+Key Setup Steps:
+Download pre-configured files.
+Use Docker commands to set up containers.
+Configure hostnames in /etc/hosts.
+Lab Tasks
+Attacks
+Task 1: Observing HTTP Requests
+
+Use tools (e.g., HTTP Header Live) to examine GET and POST requests on Elgg.
+Identify parameters involved.
+Task 2: CSRF via GET Request
+
+Craft a URL that exploits an active session to execute an unauthorized friend request.
+Explore the use of HTML tags like <img> for silent GET requests.
+Task 3: CSRF via POST Request
+
+Modify a victim’s profile using a forged POST request.
+Employ JavaScript to automate form submission from the attacker's site.
+Defenses
+Task 4: Enabling Elgg's CSRF Countermeasures
+
+Reactivate Elgg's token-based defense mechanism.
+Test attack effectiveness post-activation.
+Task 5: Experimenting with SameSite Cookies
+
+Test cookie behavior (Normal, Lax, Strict) with cross-site and same-site requests.
+Analyze how SameSite properties mitigate CSRF risks.
+Guidelines
+Tools:
+Firefox add-ons (e.g., HTTP Header Live) for analyzing HTTP traffic.
+Developer tools for debugging JavaScript.
+Instructions:
+Detailed steps to observe, debug, and craft requests.
+Submission: Write your own walk-through for the wargame and submit it as a single PDF file named name_id_l6.pdf.
+
+Notes:
+
+alias dcbuild='docker-compose build'
+
+alias dcdown='docker-compose down'
+
+alias dcup='docker-compose up'
+
+alias dockps='docker ps --format "{{.ID}}  {{.Names}}"'
+
+
+10.9.0.5 www.seed-server.com
+
+10.9.0.5 www.example32.com
+
+10.9.0.105 www.attacker32.com
+
+W02_Web_CSRF.pdf
+Wenliang Du - P2 Ch10 Cross Site Request Forgery.pdf

@@ -1,0 +1,28 @@
+🔬 Lab Overview & Objective
+The primary goal of this lab is to demonstrate how to perform a Return-to-libc attack, a sophisticated variant of the traditional buffer-overflow exploit that can bypass modern operating system defense mechanisms—specifically, non-executable stacks  .
+
+Because modern systems block shellcode execution directly from the stack, attackers instead divert control flow to pre-existing, trusted functions (such as system()) residing within the system's shared C library (libc)  .
+
+🛠️ Environment Setup & Countermeasures
+To conduct the lab, specific security configurations are managed on a 32-bit x86 Ubuntu environment:
+
+Disabling Address Space Randomization (ASLR): Randomized memory addresses make exploitation difficult; this is disabled to ensure predictable function and environment locations  .
+Disabling StackGuard: Compiler-level stack protection is turned off using -fno-stack-protector  .
+Enforcing Non-Executable Stacks: Compiled with -z noexecstack to explicitly prove that non-executable stacks can be bypassed using return-to-libc techniques  .
+Shell Countermeasures (/bin/dash vs. /bin/zsh): Ubuntu's default /bin/dash automatically drops Set-UID privileges. The lab initially relinks /bin/sh to /bin/zsh to bypass this restriction before exploring advanced workarounds  .
+📋 Core Lab Tasks
+1. Task 1: Finding libc Function Addresses
+Using gdb, students debug the vulnerable root-owned Set-UID program (retlib) to find the exact memory addresses of vital library functions like system() and exit()  .
+2. Task 2: Locating the Shell String (/bin/sh)
+Attackers need an argument to pass to system(). By exporting an environment variable (MYSHELL="/bin/sh"), its address can be reliably mapped and retrieved in memory to serve as the command parameter  .
+3. Task 3: Launching the Attack (badfile Construction)
+Using Python, students craft a malicious input file (badfile) designed to overflow the vulnerable buffer (bof())  .
+The payload carefully overwrites the stack's return address with the address of system(), followed by the address of exit() and the "/bin/sh" string address  .
+Attack Variations: Exploring why exit() is necessary to prevent crashes and testing how program name length changes affect memory layouts  .
+4. Task 4: Defeating Shell Countermeasures (execv)
+Restoring /bin/sh to point back to /bin/dash, students learn to bypass privilege-dropping protections by targeting the execv() function instead of system(), setting up an argument array (argv[]) to execute /bin/bash -p directly for root access  .
+5. Task 5 (Optional): Introduction to Return-Oriented Programming (ROP)
+Students explore chaining function calls by invoking an unused function (foo()) 10 consecutive times before successfully dropping into a root shell, serving as an introduction to advanced Return-Oriented Programming (ROP)  .
+📚 Technical Foundation: Function Call Mechanics
+The lab concludes with a low-level analysis of CPU registers (esp and ebp) and stack frames during function entry (prologue) and exit (epilogue), illustrating precisely how control is hijacked during ret and leave instructions  .
+Return_to_Libc.pdf
